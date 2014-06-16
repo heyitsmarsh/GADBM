@@ -5,20 +5,22 @@ public class player : MonoBehaviour
 {
 
 	public Vector3 jumpForce = new Vector3(0, 300);
-	public float speed = 1;
-
+	public Vector3 speed = new Vector3(1,0);
+	public float maxspeed = 3; 
 
 	void Update ()
 	{
 
 
 		//rigidbody.velocity.x = 1;
-		Vector3 b = new Vector3(speed,0,0);
 
-		rigidbody.AddForce(b);
+		if(rigidbody.velocity.x < maxspeed)
+		rigidbody.AddForce(speed);
+
 		if (Input.GetKeyUp("space"))
 		{
 			//rigidbody.velocity = Vector3.zero;
+			rigidbody.velocity = speed;
 			rigidbody.AddForce(jumpForce);
 		}
 	
